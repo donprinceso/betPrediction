@@ -1,0 +1,35 @@
+body{
+    margin: 0px;
+    font-size: 12px;
+    font-family: Arial,Helvetica,sans-serif;
+    background-color: #122b40;
+    color: #fff;
+}
+a{
+    
+    color: #fff;
+    display: block;
+    text-decoration: none;
+    
+}
+
+.navbar{
+    border-radius: 0px;
+}
+#myCarousel{
+    margin-top: 100px;
+}
+.center-fix{
+    
+    color: #2d2d2d;
+}
+footer{
+    height: 50px;
+}
+.act:hover{
+    border-bottom: 2px solid #0056b3;
+}
+.w3-card-4{
+    background:#122b40; 
+    color: #fff;
+}
