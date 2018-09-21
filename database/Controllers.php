@@ -1,9 +1,44 @@
 <?php
 
-require_once '../include/Models.php';
+require_once 'Models.php';
 class Controllers extends Model{
    
-    
+    public function insert($firstname,$lastname,$email,$password){
+        try{
+        $stmt = $this->connect()->prepare("insert into admin (firstname,lastname,email,password) values "
+                . "(:firstname,:lastname,:email,:password)");
+        $stmt->bindParam(':firstname',$firstname);
+        $stmt->bindParam(':lastname',$lastname);
+        $stmt->bindParam(':email',$email);
+        $stmt->bindParam(':password',$password);
+        $stmt->execute();
+        while ($rows = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $_SESSION['email'] = $rows['email'];
+        }
+        } catch (Exception $ex){
+            echo $ex->getMessage();
+        }
+    }
+    public function insert_query(){
+        if (isset($_POST['admin_signup_btn'])){
+            $firstname = $_POST['firstname'];
+            $lastname = $_POST['lastname'];
+            $email = $_POST['email'];
+            $pass = md5($_POST['password']);
+            if(strlen($pass)< 6){
+                $this->error=1;
+                $this->ERROR_TEXT="Password is less than 6";
+            }
+            if (count($this->error)==0){
+                $this->insert($firstname, $lastname, $email, $password);
+            }
+            else {
+                $this->error=1;
+                $this->ERROR_TEXT="<b>TRY AGAIN </b>:Sign Up was not successfully!!";
+            }
+        }
+    }
+
     public function login($email,$pass){
        $stmt = $this->connect()->prepare("SELECT email,password FROM admin WHERE email=:email AND password=:password ") ;
        $stmt->bindParam(':email',$email);
@@ -22,7 +57,7 @@ class Controllers extends Model{
         if(isset($_POST['admin_login_btn'])){
         $email = $_POST['email'];
         $pass = md5($_POST['password']);
-            if(strlen($pass)< 4){
+            if(strlen($pass)< 6){
                 $this->error=1;
                 $this->ERROR_TEXT="Password is less than 6 ";
             }
@@ -86,7 +121,7 @@ class Controllers extends Model{
         $stmt = $this->connect()->query($sql_query);
       $result = "";
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            echo $result=$row['category'];
+            echo $result=$row['category'].'<br>';
         }
         }
  catch (Exception $e){
@@ -94,5 +129,24 @@ class Controllers extends Model{
         }
             
     }
-    
+     
+    public function displayFree(){
+        $currentdate = date('d'.':'.'m'.':'.'y');
+        try{
+            $sql="select * from freetips_tb ORDER BY freetip_id DESC LIMIT 10";
+            $stmt= $this->connect()->query($sql);          
+            if($stmt->rowCount()>0){
+              while ($data = $stmt->fetch(PDO::FETCH_ASSOC)){
+                  $indexdisplay='<tr>
+                                <td class="text-uppercase">'.$data['country'].'</td>
+                                <td class="text-center">'.$data['club_names'].'</td>
+                                <td>'.$data['category'].'</td>
+                              </tr>';
+                  echo $indexdisplay;
+              }
+            }
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
+    }
 }

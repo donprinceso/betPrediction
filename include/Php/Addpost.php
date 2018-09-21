@@ -11,25 +11,27 @@
  *
  * @author ServerLand
  */
-include_once '../include/Models.php';
+include_once '../database/Models.php';
+
 class Addpost extends Model{
     
     
 
 
     public function insertpost(){
-        $getCurrentdate = data('Y'.':'.'m'.':'.'d');
+        $getCurrentdate = date('Y'.':'.'m'.':'.'d');
         if(isset($_POST[''])){
           $counry = $_POST[''];
           $club_name = $_POST[''];
           $category = $_POST['category'];
           if(count($this->error)==0){
           try{
-        $stmt = $this->connect()->prepare("INSERT INTO () VALUES ()");
-        $stmt->bindParam('',$counry);
-        $stmt->bindParam('',$club_name);
-        $stmt->bindParam('',$category);
-        $stmt->bindParam('',$getCurrentdate);
+        $stmt = $this->connect()->prepare("INSERT INTO freetips_tb(country,dataposted,club_names,category)"
+                . " VALUES (:country,:dateposted,clubname,:category)");
+        $stmt->bindParam(':country',$counry);
+        $stmt->bindParam(':dataposted',$getCurrentdate);
+        $stmt->bindParam(':clubname',$club_name);
+        $stmt->bindParam(':category',$category);
         $stmt->execute();
         echo '<span>Added Successfully!!!</span>';
           }
@@ -42,16 +44,16 @@ class Addpost extends Model{
      
     public function getfreeTabel(){
         try{
-            $query = "SELECT * FROM ";
+            $query = "SELECT * FROM freetips_tb";
             $stmt = $this->connect()->query($query);
             if($stmt->rowCount()>0){
-                while ($rows = $stmt->fetch_assoc(PDO::FETCH_ASSOC)){
+                while ($rows = $stmt->fetch(PDO::FETCH_ASSOC)){
                     $postTable='<tr>
-                            <td scope="row">1</td>
-                            <td>England</td>
-                            <td>9/9/2018</td>
-                            <td>Man United Vs Leicester city</td>
-                            <td>BTS</td>
+                            <td scope="row">'.$rows['freetip_id'].'</td>
+                            <td>'.$rows['country'].'</td>
+                            <td>'.$rows['dataposted'].'</td>
+                            <td>'.$rows['club_names'].'</td>
+                            <td>'.$rows['category'].'</td>
                         </tr>';
                     echo $postTable;
                 }
@@ -62,14 +64,26 @@ class Addpost extends Model{
         }
     }
     
-    public function displayFree(){
-        $currentdate=data('d'.':'.'m'.':'.'y');
+    
+    
+     public function displayFree2(){
         try{
-            $query="select country,clue_name,category from '' where datapost=:currentdate";
+            $query="select * from freetips_tb Limit 0,10";
             $stmt= $this->connect()->prepare($query);
-            $stmt->bindParam(':currentdata',$currentdate);
             $stmt->execute();
-            
+            if($stmt->rowCount()>0){
+              while ($data = $stmt->fetch(PDO::FETCH_ASSOC)){
+                  $tabledisplay='<tr>
+                            <td>'.$data['freetip_id'].'</td>
+                            <td>'.$data['dataposted'].'</td>
+                            <td>'.$data['country'].'</td>
+                            <td>'.$data['club_names'].'</td>
+                            <td>'.$data['category'].'</td>
+                            <td><a href="../php/details.php" class="btn btn-secondary"><i class="fa fa-angle-double-right"></i> Details</a></td>
+                        </tr>';
+                  echo $tabledisplay;
+              }
+            }
         } catch (Exception $ex) {
             echo $ex->getMessage();
         }

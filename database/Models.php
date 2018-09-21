@@ -1,5 +1,5 @@
 <?php
-include '../include/config.inc.php';
+require_once  'config.inc.php';
 class Model {
     private $dbhost ;
     private $dbuser ;

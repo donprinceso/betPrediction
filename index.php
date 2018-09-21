@@ -1,5 +1,7 @@
 <?php include 'include/header_start.php'; ?>
-
+<?Php include 'database/Controllers.php';
+    $freetip = new Controllers();    
+?>
 <title>Bet Predict</title>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
@@ -32,51 +34,7 @@
                         <table class="w3-table w3-hoverable tr w3-bordered tr">
                         
                             <tbody class="w3-striped tbody">
-                                <tr>
-                                <td>UEL</td>
-                                <td class="text-center">Man Utd vs Leicester City</td>
-                                <td>Ov 2.5</td>
-                              </tr>
-                              <tr>
-                                <td>FRA</td>
-                                <td class="text-center">PSG vs Monaco</td>
-                                <td>BTS</td>
-                              </tr>
-                              <tr>
-                                <td>NET CUP</td>
-                                <td class="text-center">PSV vs Feyenoord Rotterdem</td>
-                                <td>1x</td>
-                              </tr>
-                               <tr>
-                                <td>UEL</td>
-                                <td class="text-center">Man Utd vs Leicester City</td>
-                                <td>Ov 2.5</td>
-                              </tr>
-                              <tr>
-                                <td>FRA</td>
-                                <td class="text-center">PSG vs Monaco</td>
-                                <td>BTS</td>
-                              </tr>
-                              <tr>
-                                <td>NET CUP</td>
-                                <td class="text-center">PSV vs Feyenoord Rotterdem</td>
-                                <td>1x</td>
-                              </tr>
-                               <tr>
-                                <td>UEL</td>
-                                <td class="text-center">Man Utd vs Leicester City</td>
-                                <td>Ov 2.5</td>
-                              </tr>
-                              <tr>
-                                <td>FRA</td>
-                                <td class="text-center">PSG vs Monaco</td>
-                                <td>BTS</td>
-                              </tr>
-                              <tr>
-                                <td>NET CUP</td>
-                                <td class="text-center">PSV vs Feyenoord Rotterdem</td>
-                                <td>1x</td>
-                              </tr>
+                              <?Php $freetip->displayFree(); ?>
                             </tbody>
                         </table>
                     </div>

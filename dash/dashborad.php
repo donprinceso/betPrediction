@@ -1,8 +1,8 @@
- <?php require_once '../include/header_start.php';?>
+ <?php include '../include/header_start.php';?>
 <title></title>
 <?php require_once '../include/header_end.php';?>
 <?php 
-    require_once '../include/controllers.php';
+    include '../database/controllers.php';
     $cate = new Controllers();
     $cate->InsertCategory();
 ?>
@@ -28,19 +28,19 @@
     <div class="row">
         <div class="col-md-3">
             <a class="w3-button w3-bar w3-bar-item w3-text-brown w3-round-jumbo" onclick="document.getElementById('addfreetips').style.display='block'">
-                <i class="fa fa-plus"></i>Add Free Tips</a> 
+                <i class="fa fa-plus"></i> Add Free Tips</a> 
         </div>
         <div class="col-md-3">
             <a class="w3-button w3-bar w3-bar-item w3-text-brown w3-round-jumbo" onclick="document.getElementById('addmost').style.display='block'">
-                <i class="fa fa-plus"></i>Add Most Predict</a>
+                <i class="fa fa-plus"></i> Add Most Predict</a>
         </div>
         <div class="col-md-3">
             <a class="w3-button w3-bar w3-bar-item w3-text-brown w3-round-jumbo" onclick="document.getElementById('addcategory').style.display='block'">
-                <i class="fa fa-plus"></i>Add Category</a>
+                <i class="fa fa-plus"></i> Add Category</a>
         </div>
         <div class="col-md-3">
             <a class="w3-button w3-bar w3-bar-item w3-text-brown w3-round-jumbo" onclick="document.getElementById('addscores').style.display='block'">
-                <i class="fa fa-plus"></i>Add Scores</a>
+                <i class="fa fa-plus"></i> Add Scores</a>
         </div>
     </div>
 </div><!--end of the second meun --->
@@ -49,7 +49,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content w3-animate-zoom">
             <div class="modal-header text-success">
-                    <h5 class=" modal-title">nAdd Free Tips</h5>
+                    <h5 class=" modal-title">Add Free Tips</h5>
                     <button onclick="document.getElementById('addfreetips').style.display='none'"
                             class="close btn-outline-secondary"><span>&times;</span></button>
                 </div>
@@ -179,14 +179,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>2-9-2018</td>
-                            <td>England</td>
-                            <td>Man City Vs Fulham</td>
-                            <td>Over 2.5</td>
-                            <td><a href="../php/details.php" class="btn btn-secondary"><i class="fa fa-angle-double-right"></i> Details</a></td>
-                        </tr>
+                        <?Php include_once '../include/Php/Addpost.php';
+                            $addpost = new Addpost();
+                            $addpost->displayFree2();
+                        ?>
                     </tbody>
                 </table>
             </div>
