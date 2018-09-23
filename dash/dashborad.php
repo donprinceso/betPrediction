@@ -1,5 +1,7 @@
- <?php include '../include/header_start.php';?>
-<title></title>
+ <?php 
+ include '../include/header_start.php';
+         include_once '../functions.php';?>
+<title><?php echo page_title("Dashboard"); ?></title>
 <?php require_once '../include/header_end.php';?>
 <?php 
     include '../database/controllers.php';
@@ -15,11 +17,12 @@
             <a href="#" class="w3-bar-item w3-button w3-text-green">Home</a>
             <a href="freetips-page.php" class="w3-bar-item w3-button w3-text-green">Free Tips</a>
             <a href="most-page.php" class="w3-bar-item w3-button w3-text-green">Most Predict</a>
-            <a href="category-page.php" class="w3-bar-item w3-button w3-text-green">Catgories</a>
+            <a href="category-page.php" class="w3-bar-item w3-button w3-text-green">Categories</a>
             <a href="#" class="w3-bar-item w3-button w3-text-green">Scores</a>
             <a href="#" class="w3-bar-item w3-button w3-text-green">User</a>
             <a href="login-wp.php" class="w3-bar-item w3-button w3-green w3-right">Log Out</a>
-            <a class="w3-bar-item  w3-right">Admin details</a>
+            <a class="w3-bar-item  w3-right"><?Php if(isset($_SESSION['email'])){
+            echo $_SESSION['email'];}?></a>
         </div> 
     </nav>
 </header>

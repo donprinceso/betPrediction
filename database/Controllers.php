@@ -1,5 +1,4 @@
 <?php
-
 require_once 'Models.php';
 class Controllers extends Model{
    
@@ -49,7 +48,7 @@ class Controllers extends Model{
                 $_SESSION['email']=$row['email'];
             }
             echo '<scrip>alert("Successfully Login!")</scrip>';
-            header("location:Admin/dashborad.php");  
+            header("location:../dash/dashborad.php");  
         }
     }
     // query the admin login 
@@ -129,7 +128,7 @@ class Controllers extends Model{
         }
             
     }
-     
+    
     public function displayFree(){
         $currentdate = date('d'.':'.'m'.':'.'y');
         try{

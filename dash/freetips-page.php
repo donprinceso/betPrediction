@@ -1,5 +1,6 @@
-<?php require_once '../include/header_start.php';?>
-<title></title>
+<?php require_once '../include/header_start.php';
+    include_once '../functions.php';?>
+<title><?php echo page_title("Free Tips"); ?></title>
 <?php require_once '../include/header_end.php';?>
 <?php require_once 'navgetion-bar.php';?>
 <?Php require_once '../include/Php/Addpost.php';?>

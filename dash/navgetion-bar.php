@@ -11,7 +11,8 @@
             <a href="#" class="w3-bar-item w3-button w3-text-green">Scores</a>
             <a href="#" class="w3-bar-item w3-button w3-text-green">User</a>
             <a href="login-wp.php" class="w3-bar-item w3-button w3-green w3-right">Log Out</a>
-            <a class="w3-bar-item  w3-right">Admin details</a>
+            <a class="w3-bar-item  w3-right"><?Php if(isset($_SESSION['email'])){
+            echo $_SESSION['email'];}?></a>
         </div> 
     </nav>
 </header>
