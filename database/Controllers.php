@@ -2,6 +2,7 @@
 require_once 'Models.php';
 class Controllers extends Model{
    
+    // this ts the query of the admin signup
     public function insert($firstname,$lastname,$email,$password){
         try{
         $stmt = $this->connect()->prepare("insert into admin (firstname,lastname,email,password) values "
@@ -18,6 +19,7 @@ class Controllers extends Model{
             echo $ex->getMessage();
         }
     }
+    // inserting of the admin signup
     public function insert_query(){
         if (isset($_POST['admin_signup_btn'])){
             $firstname = $_POST['firstname'];
@@ -37,7 +39,7 @@ class Controllers extends Model{
             }
         }
     }
-
+// theb admin login query main
     public function login($email,$pass){
        $stmt = $this->connect()->prepare("SELECT email,password FROM admin WHERE email=:email AND password=:password ") ;
        $stmt->bindParam(':email',$email);
@@ -118,21 +120,54 @@ class Controllers extends Model{
         try{
         $sql_query = "select * from category_tb";
         $stmt = $this->connect()->query($sql_query);
-      $result = "";
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            echo $result=$row['category'].'<br>';
+            echo '<option value"category">'.$row['category'].'</option>';
         }
         }
- catch (Exception $e){
+            catch (Exception $e){
             echo $e->getMessage();
         }
             
     }
-    
-    public function displayFree(){
-        $currentdate = date('d'.':'.'m'.':'.'y');
+    //adding the country to the database
+     public function InsertCountry(){
+        if(isset($_POST['country_btn'])){
+          $country=$_POST['country_name'];
+            if(count($this->error)== 0){ 
+                $data = date('Y'.':'.'m'.':'.'d');
+                try{
+               $quey ="Insert Into country_tb (country,dateposted) values (:country,:dateposted) ";
+               $stmt = $this->connect()->prepare($quey);
+               $stmt->bindParam(':country',$country);
+               $stmt->bindParam(':dateposted',$data);
+               $stmt->execute();
+               echo '<span>Country Added Successfully!!!</span>';
+           }catch(Exception $ex){echo  $ex->getMessage();}
+            }
+           else {
+            $this->error=1;
+            $this->ERROR_TEXT="Country Not added successfully!!";
+           }   
+        }
+    }
+    // getting the country from database and show it out
+    public function GetCountry(){
         try{
-            $sql="select * from freetips_tb ORDER BY freetip_id DESC LIMIT 10";
+        $sql_query = "select * from country_tb";
+        $stmt = $this->connect()->query($sql_query);
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            echo '<option value"country">'.$row['country'].'</option>';
+        }
+        }
+            catch (Exception $e){
+            echo $e->getMessage();
+        }
+            
+    }
+    //display the free tips to the index page
+    public function displayFree(){
+        try{
+            $sql="select * from freetips_tb ORDER BY freetip_id DESC LIMIT 7";
             $stmt= $this->connect()->query($sql);          
             if($stmt->rowCount()>0){
               while ($data = $stmt->fetch(PDO::FETCH_ASSOC)){

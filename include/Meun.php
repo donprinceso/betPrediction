@@ -9,8 +9,7 @@
         <div class="col-md-8 w3-padding-8">
             <a href="#" class="w3-bar-item w3-button w3-text-green">Home</a>
             <a href="#plans" class="w3-bar-item w3-button w3-text-green">Plans</a>
-            <a href="#" class="w3-bar-item w3-button w3-text-green">Most Prediction</a>
-            <a href="#" class="w3-bar-item w3-button w3-text-green">Catgories</a>
+            <a href="#" class="w3-bar-item w3-button w3-text-green">Categories</a>
             <a href="#" class="w3-bar-item w3-button w3-text-green">Live Scores</a>
             <a href="#" class="w3-bar-item w3-button w3-text-green">About Us</a>
         </div> 

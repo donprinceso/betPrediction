@@ -7,6 +7,11 @@
     include '../database/controllers.php';
     $cate = new Controllers();
     $cate->InsertCategory();
+    $cate->InsertCountry();
+?>
+<?Php include '../include/php/Addpost.php';
+    $add = new Addpost();
+    $add->insertpost();
 ?>
 <header class="container-fluid w3-bar w3-border w3-light-grey w3-card-4">
     <nav class="row">
@@ -18,7 +23,8 @@
             <a href="freetips-page.php" class="w3-bar-item w3-button w3-text-green">Free Tips</a>
             <a href="most-page.php" class="w3-bar-item w3-button w3-text-green">Most Predict</a>
             <a href="category-page.php" class="w3-bar-item w3-button w3-text-green">Categories</a>
-            <a href="#" class="w3-bar-item w3-button w3-text-green">Scores</a>
+            <a href="Update.php" class="w3-bar-item w3-button w3-text-green">Updating</a>
+            <a href="#" class="w3-bar-item w3-button w3-text-green">country</a>
             <a href="#" class="w3-bar-item w3-button w3-text-green">User</a>
             <a href="login-wp.php" class="w3-bar-item w3-button w3-green w3-right">Log Out</a>
             <a class="w3-bar-item  w3-right"><?Php if(isset($_SESSION['email'])){
@@ -26,7 +32,7 @@
         </div> 
     </nav>
 </header>
-<!-- second meun  -->
+<!-- second menu  -->
 <div class="container w3-padding-16">
     <div class="row">
         <div class="col-md-3">
@@ -42,13 +48,13 @@
                 <i class="fa fa-plus"></i> Add Category</a>
         </div>
         <div class="col-md-3">
-            <a class="w3-button w3-bar w3-bar-item w3-text-brown w3-round-jumbo" onclick="document.getElementById('addscores').style.display='block'">
-                <i class="fa fa-plus"></i> Add Scores</a>
+            <a class="w3-button w3-bar w3-bar-item w3-text-brown w3-round-jumbo" onclick="document.getElementById('country').style.display='block'">
+                <i class="fa fa-plus"></i> Add Country</a>
         </div>
     </div>
-</div><!--end of the second meun --->
+</div><!--end of the second menu --->
 
-<div class="w3-modal" id="addfreetips"><!-- second meun modal -->
+<div class="w3-modal" id="addfreetips"><!-- second menu modal -->
     <div class="modal-dialog modal-lg">
         <div class="modal-content w3-animate-zoom">
             <div class="modal-header text-success">
@@ -59,32 +65,25 @@
                 <div class="modal-body">
                     <form class="w3-form" action="dashborad.php" method="POST" role="form">
                     <div class="w3-section form-group">
-                        <label for="Country" class="form-check-label">Country</label>
-                        <select class="w3-select form-control">
-                            <option>England</option>
-                            <option>England</option>
-                            <option>England</option>
-                            <option>England</option>
-                            <option>England</option>
-                            <option>England</option>
-                            <option>England</option>
+                        <select class="w3-select form-control" name="country">
+                            <option value="0">Select Country</option>
+                            <?Php  $cate->GetCountry();?>
                         </select>
                     </div>
                     <div class="w3-section form-group">
                     </div>
                     <div class="w3-section form-group">
-                        <input name="" placeholder="names" type="text" required class="f form-control"/>
+                        <input name="club_name" placeholder="Club Names" type="text" required class="form-control"/>
                     </div>
                     <div class="w3-section form-group">
-                        <select name="" required class="form-control">
+                        <select name="category" required class="form-control">
                             <option value="0">Select Categories</option>
-                            <option value=""><?php $cate->GetCategory()?><br>
-                            </option>
+                            <?php $cate->GetCategory()?>
                         </select>
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary"onclick="document.getElementById('addfreetips').style.display='none'">Close</button>
-                        <button class="btn btn-primary" type="submit" name="addpost">Add Post</button>
+                        <button class="btn btn-primary" type="submit" name="addpost_btn">Add Post</button>
                     </div>
                 </form>
                     
@@ -104,15 +103,9 @@
                 <div class="modal-body">
                 <form class="w3-form" action="" method="POST" role="form">
                     <div class="w3-section form-group">
-                        <label for="Country" class="form-check-label">Country</label>
-                        <select class="w3-select form-control">
-                            <option>England</option>
-                            <option>England</option>
-                            <option>England</option>
-                            <option>England</option>
-                            <option>England</option>
-                            <option>England</option>
-                            <option>England</option>
+                        <select class="w3-select form-control" name="country">
+                            <option value="0">Select Country</option>
+                            <?Php  $cate->GetCountry();?>
                         </select>
                     </div>
                     <div class="w3-section form-group">
@@ -124,8 +117,7 @@
                     <div class="w3-section form-group">
                         <select name="" required class="form-control">
                             <option value="0">Select Categories</option>
-                            <option value=""><?php $cate->GetCategory()?><br>
-                            </option>
+                            <?php $cate->GetCategory()?>
                         </select>
                         
                     </div>
@@ -157,12 +149,34 @@
                         <button class="btn btn-success" name="addCategory" type="submit">Add Category</button>
                     </div>
                 </form>
-            </div>
-            
-            
+            </div>    
         </div>
     </div>
-</div><!-- the main dash --->
+</div>
+<div class="modal w3-modal" id="country">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header text-success">
+                <h5 class="modal-title">Add Country</h5>
+                <button class="close" onclick="document.getElementById('country').style.display='none'"><span>&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form method="Post" action="dashborad.php">
+                    <div class="form-group">
+                        <input class="form-control" name="country_name" required placeholder="Country">
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" onclick="document.getElementById('country').style.display='none'">Close</button>
+                        <button class="btn btn-success" name="country_btn" type="submit">Add Country</button>
+                    </div>
+                </form>
+            </div>    
+        </div>
+    </div>
+</div>
+
+<!-- the main dash --->
+
 <section class="container w3-white">
     <div class="row">
         <div class="col-md-9">

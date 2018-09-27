@@ -2,7 +2,7 @@
 <footer class="container ">
     <div class="row">
         <div class="col-md-4">
-            <h4 class="text-uppercase text-warning">Ouick Links</h4><br>
+            <h4 class="text-uppercase text-warning">Quick Links</h4><br>
             <a class="w3-bar w3-bar-block" href="#">Home</a>
             <a class="w3-bar w3-bar-block" href="#">How To Pay</a>
             <a class="w3-bar w3-bar-block" href="#">Tip Genius</a>
@@ -10,7 +10,7 @@
             <a class="w3-bar w3-bar-block" href="#">About Us</a>
         </div>
         <div class="col-md-4">
-            <h4 class="text-uppercase text-warning">BetPredic</h4>
+            <h4 class="text-uppercase text-warning">BestPredict</h4>
             <br>
             <span>Football betting is fun,period.
             it's a rousing victory or a crushing defeat but without
@@ -22,18 +22,16 @@
             <h4 class="text-uppercase text-warning">Contact Us</h4><br>
             <span class="text-success">Calls only:</span>
             </br>
-            <span>0806 Betpredic(+234- 08067173645)</span>
+            <span>0806 Bestpredict(+234- 08067173645)</span>
             <br>
             <span class="text-success">Email Us:</span>
             </br>
-            <span>contact@betpredic.com</span>
+            <span>contact@bestpredict.com</span>
         </div>
-    </div>
+    </div><br>
     <div class="row">
-        <br>
         <div class="col-md-3">
-            <h4>Join BetPredic On</h4>
-            <br/>
+            <h4>Join BestPredict On</h4>
             <a class="btn btn-outline-secondary "><span class="fa fa-facebook"></span></a>
             <a class="btn btn-outline-secondary "><span class="fa fa-youtube"></span></a>
             <a class="btn btn-outline-secondary"><span class="fa fa-whatsapp"></span></a>

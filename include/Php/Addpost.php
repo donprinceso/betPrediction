@@ -1,11 +1,5 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of Addpost
  *
@@ -20,24 +14,23 @@ class Addpost extends Model{
 
     public function insertpost(){
         $getCurrentdate = date('Y'.':'.'m'.':'.'d');
-        if(isset($_POST[''])){
-          $counry = $_POST[''];
-          $club_name = $_POST[''];
+        if(isset($_POST['addpost_btn'])){
+          $country = $_POST['country'];
+          $club_name = $_POST['club_name'];
           $category = $_POST['category'];
           if(count($this->error)==0){
-          try{
-        $stmt = $this->connect()->prepare("INSERT INTO freetips_tb(country,dataposted,club_names,category)"
-                . " VALUES (:country,:dateposted,clubname,:category)");
-        $stmt->bindParam(':country',$counry);
+        //  try{
+        $stmt = $this->connect()->prepare("insert into freetips_tb (`country`, `dataposted`, `club_names`, `category`)"
+                . " values (:country,:dataposted,:clubname,:category)");
+        $stmt->bindParam(':country',$country);
         $stmt->bindParam(':dataposted',$getCurrentdate);
         $stmt->bindParam(':clubname',$club_name);
         $stmt->bindParam(':category',$category);
         $stmt->execute();
         echo '<span>Added Successfully!!!</span>';
-          }
-            catch (Exception $ex){
-              echo  $ex->getMessage();
-                 }
+       //   }catch (Exception $ex){
+           //   echo  $ex->getMessage();
+           //      }
             }
         }
     }
@@ -82,6 +75,25 @@ class Addpost extends Model{
                             <td><a href="../php/details.php" class="btn btn-secondary"><i class="fa fa-angle-double-right"></i> Details</a></td>
                         </tr>';
                   echo $tabledisplay;
+              }
+            }
+        } catch (Exception $ex) {
+            echo $ex->getMessage();
+        }
+    }
+     public function displayAllFree(){
+        $currentdate = date('d'.':'.'m'.':'.'y');
+        try{
+            $sql="select * from freetips_tb ORDER BY freetip_id DESC LIMIT 10,20";
+            $stmt= $this->connect()->query($sql);          
+            if($stmt->rowCount()>0){
+              while ($data = $stmt->fetch(PDO::FETCH_ASSOC)){
+                  $indexdisplay='<tr>
+                                <td class="text-uppercase">'.$data['country'].'</td>
+                                <td class="text-center">'.$data['club_names'].'</td>
+                                <td>'.$data['category'].'</td>
+                              </tr>';
+                  echo $indexdisplay;
               }
             }
         } catch (Exception $ex) {
