@@ -58,7 +58,7 @@ class Addpost extends Model{
     }
     
     
-    
+    // displaying the lastes upload of freetips in the dashboard
      public function displayFree2(){
         try{
             $query="select * from freetips_tb Limit 0,10";
@@ -81,10 +81,10 @@ class Addpost extends Model{
             echo $ex->getMessage();
         }
     }
-     public function displayAllFree(){
-        $currentdate = date('d'.':'.'m'.':'.'y');
+    // show all the freefitps form the database to the free tips page
+     public function getfreeUnmRows(){
         try{
-            $sql="select * from freetips_tb ORDER BY freetip_id DESC LIMIT 10,20";
+            $sql="select * from freetips_tb";
             $stmt= $this->connect()->query($sql);          
             if($stmt->rowCount()>0){
               while ($data = $stmt->fetch(PDO::FETCH_ASSOC)){

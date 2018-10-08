@@ -2,6 +2,9 @@
 <?Php include 'database/Controllers.php';
     $freetip = new Controllers();    
 ?>
+<?Php include 'include/Php/mostpredict.php';
+    $most = new mostpredict();
+?>
 <title>Best Prediction.com</title>
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
@@ -21,9 +24,10 @@
         <div class="w3-row w3-container" style="margin-top: 100px;">
             <div class="w3-twothird w3-padding">
                 <div class="w3-content w3-display-container" >
-                    <img class="mySlides" src="res/img/faith-love-1920x600.jpg" style="width:100%;height:353px;">
-                    <img class="mySlides" src="res/img/faith-love-1920x600.jpg" style="width:100%;height:353px;">
-                    <img class="mySlides" src="res/img/faith-love-1920x600.jpg" style="width:100%;height:353px;">
+                    <img class="mySlides" src="res/img/slide002.jpg" style="width:100%;height:353px;">
+                    <img class="mySlides" src="res/img/silde004.jpg" style="width:100%;height:353px;">
+                    <img class="mySlides" src="res/img/slide004.jpg" style="width:100%;height:353px;">
+                    <img class="mySlides" src="res/img/slide006.jpg" style="width:100%;height:353px;">
                     <div class="w3-center w3-section w3-large w3-text-white w3-display-bottomleft" style="width:100%">
                         <div class="w3-left w3-padding-left w3-hover-text-khaki" onclick="plusDivs(-1)">❮</div>
                         <div class="w3-right w3-padding-right w3-hover-text-khaki" onclick="plusDivs(1)">❯</div>
@@ -51,54 +55,7 @@
                 <div class="table-responsive"> 
                     <table class="table table-condensed table-bordered">
                         <tbody>
-                            <tr>
-                                <td>9-8-18</td>
-                                <td class="text-uppercase">epl</td>
-                                <td class="text-center">Man Utd vs Leicester City</td>
-                                   <td>Ov 2.5</td>
-                            </tr>
-                            <tr>
-                                <td>9-8-18</td>
-                                <td class="text-uppercase">epl</td>
-                                <td class="text-center">Man Utd vs Leicester City</td>
-                                   <td>Ov 2.5</td>
-                            </tr>
-                            <tr>
-                                <td>9-8-18</td>
-                                <td class="text-uppercase">epl</td>
-                                <td class="text-center">Man Utd vs Leicester City</td>
-                                   <td>Ov 2.5</td>
-                            </tr>
-                            <tr>
-                                <td>9-8-18</td>
-                                <td class="text-uppercase">epl</td>
-                                <td class="text-center">Man Utd vs Leicester City</td>
-                                   <td>Ov 2.5</td>
-                            </tr>
-                            <tr>
-                                <td>9-8-18</td>
-                                <td class="text-uppercase">epl</td>
-                                <td class="text-center">Man Utd vs Leicester City</td>
-                                   <td>Ov 2.5</td>
-                            </tr>
-                            <tr>
-                                <td>9-8-18</td>
-                                <td class="text-uppercase">epl</td>
-                                <td class="text-center">Man Utd vs Leicester City</td>
-                                   <td>Ov 2.5</td>
-                            </tr>
-                            <tr>
-                                <td>9-8-18</td>
-                                <td class="text-uppercase">epl</td>
-                                <td class="text-center">Man Utd vs Leicester City</td>
-                                   <td>Ov 2.5</td>
-                            </tr>
-                            <tr>
-                                <td>9-8-18</td>
-                                <td class="text-uppercase">epl</td>
-                                <td class="text-center">Man Utd vs Leicester City</td>
-                                   <td>Ov 2.5</td>
-                            </tr>
+                            <?Php $most->Mostdisplay();?>
                         </tbody>
                      </table>
                 </div>

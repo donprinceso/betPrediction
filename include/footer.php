@@ -12,7 +12,7 @@
         <div class="col-md-4">
             <h4 class="text-uppercase text-warning">BestPredict</h4>
             <br>
-            <span>Football betting is fun,period.
+            <span>Football betting is fun.
             it's a rousing victory or a crushing defeat but without
             some level of knowledge,football betting is a high risk venture
             we are here to make it easy for you,we offer accurate predictions and 

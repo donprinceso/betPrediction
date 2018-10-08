@@ -25,12 +25,13 @@ class Controllers extends Model{
             $firstname = $_POST['firstname'];
             $lastname = $_POST['lastname'];
             $email = $_POST['email'];
-            $pass = md5($_POST['password']);
-            if(strlen($pass)< 6){
+            $password =($_POST['password']);
+            if(strlen($password)< 6){
                 $this->error=1;
                 $this->ERROR_TEXT="Password is less than 6";
             }
             if (count($this->error)==0){
+                $password= md5($password);
                 $this->insert($firstname, $lastname, $email, $password);
             }
             else {
@@ -134,12 +135,12 @@ class Controllers extends Model{
         if(isset($_POST['country_btn'])){
           $country=$_POST['country_name'];
             if(count($this->error)== 0){ 
-                $data = date('Y'.':'.'m'.':'.'d');
+                $date = date('Y'.':'.'m'.':'.'d');
                 try{
                $quey ="Insert Into country_tb (country,dateposted) values (:country,:dateposted) ";
                $stmt = $this->connect()->prepare($quey);
                $stmt->bindParam(':country',$country);
-               $stmt->bindParam(':dateposted',$data);
+               $stmt->bindParam(':dateposted',$date);
                $stmt->execute();
                echo '<span>Country Added Successfully!!!</span>';
            }catch(Exception $ex){echo  $ex->getMessage();}
@@ -167,7 +168,8 @@ class Controllers extends Model{
     //display the free tips to the index page
     public function displayFree(){
         try{
-            $sql="select * from freetips_tb ORDER BY freetip_id DESC LIMIT 7";
+           $sql="select * from freetips_tb where dataposted=CURDATE()";
+           // $sql="select * from freetips_tb where dataposted= DATE(NOW()- INTERVAL 5 DAY)";
             $stmt= $this->connect()->query($sql);          
             if($stmt->rowCount()>0){
               while ($data = $stmt->fetch(PDO::FETCH_ASSOC)){
@@ -178,6 +180,8 @@ class Controllers extends Model{
                               </tr>';
                   echo $indexdisplay;
               }
+            } else {
+               echo 'There are no data to show'; 
             }
         } catch (Exception $ex) {
             echo $ex->getMessage();

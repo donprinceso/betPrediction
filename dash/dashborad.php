@@ -101,7 +101,7 @@
                             class="close btn-outline-secondary"><span>&times;</span></button>
                 </div>
                 <div class="modal-body">
-                <form class="w3-form" action="" method="POST" role="form">
+                    <form class="w3-form" action="dashborad.php" method="POST" role="form">
                     <div class="w3-section form-group">
                         <select class="w3-select form-control" name="country">
                             <option value="0">Select Country</option>
@@ -109,13 +109,13 @@
                         </select>
                     </div>
                     <div class="w3-section form-group">
-                        <input class="form-control" placeholder="Legale" name="legal" required/>
+                        <input class="form-control" placeholder="League" name="league" required/>
                     </div>
                     <div class="w3-section form-group">
-                        <input name="" placeholder="names" type="text" required class="form-control"/>
+                        <input name="club_names" placeholder="Club Names" type="text" required class="form-control"/>
                     </div>
                     <div class="w3-section form-group">
-                        <select name="" required class="form-control">
+                        <select name="category" required class="form-control">
                             <option value="0">Select Categories</option>
                             <?php $cate->GetCategory()?>
                         </select>
@@ -123,7 +123,7 @@
                     </div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" onclick="document.getElementById('addmost').style.display='none'">Close</button>
-                        <button class="btn btn-primary">Add Post</button>
+                        <button class="btn btn-primary" type="submit" name="mostpredict_btn">Add Post</button>
                     </div>
                 </form>
                     
