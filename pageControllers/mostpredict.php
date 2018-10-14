@@ -4,7 +4,7 @@
  *
  * @author ServerLand
  */
-include_once 'database/Models.php';
+include_once '../database/Models.php';
 
 class mostpredict extends Model{
    // insert data into most predict 
@@ -44,28 +44,7 @@ class mostpredict extends Model{
         }
     }
     
-    public function Mostdisplay(){
-        try{
-           $sql="select * from mostpredict_tb where dateposted=CURDATE()";
-           // $sql="select * from freetips_tb where dataposted= DATE(NOW()- INTERVAL 5 DAY)";
-            $stmt= $this->connect()->query($sql);          
-            if($stmt->rowCount()>0){
-              while ($data = $stmt->fetch(PDO::FETCH_ASSOC)){
-                  $indexdisplay='<tr>
-                                <td>'.$data['dateposted'].'</td>
-                                <td class="text-uppercase">'.$data['league'].'</td>
-                                <td class="text-center">'.$data['club_names'].'</td>
-                                <td>'.$data['category'].'</td>
-                              </tr>';
-                  echo $indexdisplay;
-              }
-            } else {
-               echo '<td>There are no data to show</td>'; 
-            }
-        } catch (Exception $ex) {
-            echo $ex->getMessage();
-        }
-    }
+    
     public function getfreeTabel(){
         try{
             $query = "SELECT * FROM mostpredict_tb";

@@ -3,7 +3,7 @@
 <title><?php echo page_title("Free Tips"); ?></title>
 <?php require_once '../include/header_end.php';?>
 <?php require_once 'navgetion-bar.php';?>
-<?Php require_once '../include/Php/Addpost.php';?>
+<?Php require_once '../pageControllers/Addpost.php';?>
 <section class="w3-padding-12">
     <div class="container">
         <div class="row w3-row">

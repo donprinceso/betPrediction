@@ -72,7 +72,7 @@ class Addpost extends Model{
                             <td>'.$data['country'].'</td>
                             <td>'.$data['club_names'].'</td>
                             <td>'.$data['category'].'</td>
-                            <td><a href="../php/details.php" class="btn btn-secondary"><i class="fa fa-angle-double-right"></i> Details</a></td>
+                            <td><a href="$this->getId()" class="btn btn-secondary"><i class="fa fa-angle-double-right"></i> Details</a></td>
                         </tr>';
                   echo $tabledisplay;
               }
@@ -99,5 +99,20 @@ class Addpost extends Model{
         } catch (Exception $ex) {
             echo $ex->getMessage();
         }
+    }
+     public function getID($freetip_id){
+       $stmt="select * from freetips_tb where freetip_id =".$freetip_id;
+       $query= $this->connect()->query($stmt);
+       if($query->rowcount()>0){
+           while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
+             $getById='<div class="form-group">
+                        <input class="form-control" name='.$row["country"].' required placeholder="Country">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" name='.$row["club_names"].' required placeholder="Country">
+                    </div>';
+           echo $getById;  
+           } 
+       }
     }
 }

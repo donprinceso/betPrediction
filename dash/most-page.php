@@ -3,7 +3,8 @@
 <title><?php echo page_title("Most Prediction"); ?></title>
 <?php require_once '../include/header_end.php';?>
 <?php require_once 'navgetion-bar.php';?>
-
+<?Php require_once '../pageControllers/mostpredict.php';
+    $mp = new mostpredict()?>
 <section class="w3-padding-12">
     <div class="container">
         <div class="row w3-row">
@@ -36,19 +37,15 @@
                     <thead class="w3-card-4">
                         <tr>
                             <th>#</th>
+                            <th>Date Posted</th>
                             <th>Country</th>
                             <th>League</th>
-                            <th>Date Posted</th>
                             <th>Clubs names</th>
                             <th>Category</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td scope="row">1</td>
-                            <td>Home</td>
-                            <td>9/9/2018</td>
-                        </tr>
+                        <?php $mp->getfreeTabel()?>
                     </tbody>
                 </table>
                 <nav class="m1-4">

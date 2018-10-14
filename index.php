@@ -2,8 +2,8 @@
 <?Php include 'database/Controllers.php';
     $freetip = new Controllers();    
 ?>
-<?Php include 'include/Php/mostpredict.php';
-    $most = new mostpredict();
+<?Php //include /'pageControllers/mostpredict.php';
+    //$most = new mostpredict();
 ?>
 <title>Best Prediction.com</title>
 
@@ -51,15 +51,24 @@
          <br>
           <div class="row w3-padding-12 w3-container">
                 <div class="col-lg-6 w3-margin-top">
-               <h4 class="text-center text-uppercase text-danger">Most Prediction</h4>
-                <div class="table-responsive"> 
-                    <table class="table table-condensed table-bordered">
-                        <tbody>
-                            <?Php $most->Mostdisplay();?>
-                        </tbody>
-                     </table>
-                </div>
-               
+                    <h4 class="text-center text-uppercase text-danger">Most Prediction</h4>
+                        <div class="table-responsive"> 
+                            <table class="table table-condensed table-bordered">
+                                <tbody>
+                                    <?Php $freetip->Mostdisplay();?>
+                                </tbody>
+                             </table>
+                        </div>
+                    <br>
+                    <h4 class="text-center text-uppercase text-danger">Upcoming Prediction</h4>
+                        <div class="table-responsive"> 
+                            <table class="table table-condensed table-bordered">
+                                <tbody>
+                                    <?Php $freetip->Upcomedata();?>
+                                </tbody>
+                             </table>
+                        </div>
+
                 </div><!-- End free trip--> 
                 <div class="col-lg-6">
                     

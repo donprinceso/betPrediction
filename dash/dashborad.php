@@ -9,10 +9,14 @@
     $cate->InsertCategory();
     $cate->InsertCountry();
 ?>
-<?Php include '../include/php/Addpost.php';
+<?Php include '../pageControllers/Addpost.php';
     $add = new Addpost();
     $add->insertpost();
 ?>
+<?Php include '../pageControllers/mostpredict.php';
+    $most = new mostpredict();
+    $most->Query_insertmost();
+            ?>
 <header class="container-fluid w3-bar w3-border w3-light-grey w3-card-4">
     <nav class="row">
         <div class="col-md-2">
@@ -28,7 +32,7 @@
             <a href="#" class="w3-bar-item w3-button w3-text-green">User</a>
             <a href="login-wp.php" class="w3-bar-item w3-button w3-green w3-right">Log Out</a>
             <a class="w3-bar-item  w3-right"><?Php if(isset($_SESSION['email'])){
-            echo $_SESSION['email'];}?></a>
+            echo $_SESSION["email"];}?></a>
         </div> 
     </nav>
 </header>
@@ -196,7 +200,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?Php include_once '../include/Php/Addpost.php';
+                        <?Php include_once '../pageControllers/Addpost.php';
                             $addpost = new Addpost();
                             $addpost->displayFree2();
                         ?>
