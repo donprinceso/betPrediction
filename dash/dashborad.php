@@ -4,7 +4,7 @@
 <title><?php echo page_title("Dashboard"); ?></title>
 <?php require_once '../include/header_end.php';?>
 <?php 
-    include '../database/controllers.php';
+    include '../database/Controllers.php';
     $cate = new Controllers();
     $cate->InsertCategory();
     $cate->InsertCountry();
@@ -107,7 +107,7 @@
                 <div class="modal-body">
                     <form class="w3-form" action="dashborad.php" method="POST" role="form">
                     <div class="w3-section form-group">
-                        <select class="w3-select form-control" name="country">
+                        <select class="w3-select form-control" name="country" >
                             <option value="0">Select Country</option>
                             <?Php  $cate->GetCountry();?>
                         </select>
@@ -116,7 +116,7 @@
                         <input class="form-control" placeholder="League" name="league" required/>
                     </div>
                     <div class="w3-section form-group">
-                        <input name="club_names" placeholder="Club Names" type="text" required class="form-control"/>
+                        <input name="club_names" placeholder="Club Names"  type="text" required class="form-control"/>
                     </div>
                     <div class="w3-section form-group">
                         <select name="category" required class="form-control">
@@ -196,6 +196,7 @@
                             <th>Country</th>
                             <th>Clubs Names</th>
                             <th>Category</th>
+                            <th>Results</th>
                             <th></th>
                         </tr>
                     </thead>

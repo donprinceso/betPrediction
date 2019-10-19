@@ -48,7 +48,7 @@ class Controllers extends Model{
        $stmt->execute();
         if($stmt->num_rows == 0){
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $_SESSION['email']=$row['email'];
+                $_SESSION['email']=$email;
             }
             echo '<scrip>alert("Successfully Login!")</scrip>';
             header("location:../dash/dashborad.php");  

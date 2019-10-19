@@ -42,6 +42,8 @@
                             <th>League</th>
                             <th>Clubs names</th>
                             <th>Category</th>
+                            <th>Results</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>

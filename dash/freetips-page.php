@@ -40,6 +40,8 @@
                             <th>Date Added</th>
                             <th>Clubs name</th>
                             <th>Category</th>
+                            <th>Results</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -60,4 +62,3 @@
         </div>
     </div>
 </div>
-

@@ -58,6 +58,8 @@ class mostpredict extends Model{
                             <td>'.$rows['league'].'</td>
                             <td>'.$rows['club_names'].'</td>
                             <td>'.$rows['category'].'</td>
+                             <td></td>
+                            <td><a class="btn btn-secondary" href="../dash/Update.php?.$this->getid().">Edit</a></td>
                         </tr>';
                     echo $postTable;
                 }
@@ -67,4 +69,25 @@ class mostpredict extends Model{
             echo $ex->getMessage();
         }
     }
+     public function getid($id="club_names"){
+        try{
+            $query = "SELECT country,league,club_names,category FROM mostpredict_tb where club_names=".$id;
+            $stmt = $this->connect()->query($query);
+            if($stmt->rowCount()>0){
+                while ($rows = $stmt->fetch(PDO::FETCH_ASSOC)){
+                    $addTable='<form>
+                            <input class="form-control" name="country_name" required placeholder='.$rows['country'].'>
+                            <td>'.$rows['dataposted'].'</td>
+                            <td>'.$rows['club_names'].'</td>
+                            <td>'.$rows['category'].'</td>
+                        </form';
+                    return $addTable;
+                }
+            }
+        }
+        catch (Exception $ex){
+            echo $ex->getMessage();
+        }
+    }
+
 }
